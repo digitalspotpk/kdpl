@@ -1,0 +1,13 @@
+{
+  "name": "KD Premier League — Cricket Tournament Manager",
+  "short_name": "KDPL",
+  "description": "Live cricket tournament manager with real-time scores, team management, and analytics",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f0c",
+  "theme_color": "#0f5132",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

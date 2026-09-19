@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kdpl-green: #0f5132;
+  --color-kdpl-neon: #00ff66;
+  --color-kdpl-dark: #1e293b;
+  --color-kdpl-darker: #0f172a;
+  --color-kdpl-card: #1e2d3d;
+  --color-kdpl-border: #2d4a6b;
+  --color-kdpl-muted: #64748b;
+  --color-kdpl-text: #e2e8f0;
+  --font-oswald: "Oswald", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, .font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+body {
+  background-color: #060e1a;
+  overflow: hidden;
+}
+
+/* Light mode override */
+body.light-mode {
+  --color-kdpl-darker: #f0f4f8;
+  --color-kdpl-card: #ffffff;
+  --color-kdpl-dark: #e2e8f0;
+  --color-kdpl-border: #cbd5e1;
+  --color-kdpl-muted: #64748b;
+  --color-kdpl-text: #1e293b;
+  background-color: #f8fafc;
+}
+
+/* Scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Custom scrollbar for main area */
+.kdpl-scroll::-webkit-scrollbar { width: 3px; }
+.kdpl-scroll::-webkit-scrollbar-track { background: transparent; }
+.kdpl-scroll::-webkit-scrollbar-thumb { background: #2d4a6b; border-radius: 3px; }
+
+/* Scale 0.98 on active */
+.active\:scale-98:active { transform: scale(0.98); }
+
+/* Animations */
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,255,102,0.3); }
+  50% { box-shadow: 0 0 30px rgba(0,255,102,0.7); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.22s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.neon-glow {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Phone frame on desktop */
+@media (min-width: 640px) {
+  #kdpl-app-frame {
+    position: relative;
+    width: 430px;
+    height: 100dvh;
+    max-height: 900px;
+    margin: 0 auto;
+    border-radius: 40px;
+    border: 10px solid #1e293b;
+    overflow: hidden;
+    box-shadow:
+      0 0 80px rgba(0,255,102,0.12),
+      0 0 0 1px rgba(45,74,107,0.6),
+      0 50px 100px rgba(0,0,0,0.5);
+  }
+}
+
+/* Safe area */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Print styles for scorecard */
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area { position: fixed; top: 0; left: 0; width: 100%; }
+}
